@@ -72,6 +72,9 @@ skald docs generate -c ./config -o ./dist/docs
   - `--output-path, -o <path>` - Path to output directory (defaults to current directory)
   - **Required files**:
     - `<config-path>/.skald/outline.yml` - Outline configuration file (YAML format)
+  - **Optional files**:
+    - `<config-path>/.skald/example.md` - Example template (warns if not found)
+    - `<config-path>/.skald/rules.md` - Custom rules for documentation generation
 
 ### Memo Commands
 - `skald memo add` - Add a new memo from a file (requires authentication)
@@ -97,6 +100,8 @@ When running `skald docs generate`, your project should have:
 <config-path>/
 └── .skald/
     ├── outline.yml     # Required: documentation outline (YAML format)
+    ├── example.md      # Optional: example template
+    └── rules.md        # Optional: custom generation rules
 ```
 
 #### YAML Outline Format

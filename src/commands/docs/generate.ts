@@ -6,7 +6,7 @@ import { initDocs } from "./init";
 
 
 const DOC_GENERATION_PROMPT = `
-Based on the provided title and description, search the knowledge base for relevant information and produce a markdown file with documentation covering the provided information. Be concise and professional, but not formal.
+Based on the provided title and description, search the knowledge base for relevant information and produce a markdown file with documentation covering the provided information.
  `;
 
 interface DocFile {
@@ -50,6 +50,7 @@ function extractDocFiles(outline: any, basePath: string = '', outputBasePath: st
 export const generateDocs = async (skald: Skald, configPath: string, outputPath: string) => {
     const skaldDir = path.join(configPath, '.skald');
     const outlineYmlPath = path.join(skaldDir, 'outline.yml');
+    const rulesMdPath = path.join(skaldDir, 'rules.md');
 
     // Check for required outline.yml file
     if (!fs.existsSync(outlineYmlPath)) {
@@ -69,6 +70,17 @@ export const generateDocs = async (skald: Skald, configPath: string, outputPath:
       process.exit(1);
     }
 
+    // Read optional rules.md file
+    let rulesContent = '';
+    if (fs.existsSync(rulesMdPath)) {
+      try {
+        rulesContent = fs.readFileSync(rulesMdPath, 'utf-8');
+        console.log('📋 Found rules.md file, including in generation');
+      } catch (error) {
+        console.warn('⚠️  Warning: Could not read rules.md file:', error);
+      }
+    }
+
     console.log('📚 Generating documentation...');
     console.log(`Config path: ${configPath}`);
     console.log(`Output path: ${outputPath}`);
@@ -86,7 +98,9 @@ export const generateDocs = async (skald: Skald, configPath: string, outputPath:
       
       await Promise.all(batch.map(async (docFile) => {
         try {
-          const prompt = `${DOC_GENERATION_PROMPT}\n\nTitle: ${docFile.title}\nDescription: ${docFile.description || 'No description provided'}`;
+          let prompt = `${DOC_GENERATION_PROMPT}\n\nTitle: ${docFile.title}\nDescription: ${docFile.description || 'No description provided'}`;
+          
+          rulesContent = rulesContent || 'Be concise and professional, but not formal.'
           
           const result = await skald.chat({
             query: prompt

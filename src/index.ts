@@ -11,7 +11,7 @@ const program = new Command();
 program
   .name('skald')
   .description('Skald CLI')
-  .version('0.1.0');
+  .version('0.1.2');
 
 // Register commands
 program.addCommand(docsCommand);

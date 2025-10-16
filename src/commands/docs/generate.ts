@@ -6,7 +6,7 @@ import { initDocs } from "./init";
 
 
 const DOC_GENERATION_PROMPT = `
-Based on the provided title and description, search the knowledge base for relevant information and produce a markdown file with documentation covering the provided information.
+Based on the provided title and description produce a markdown file with documentation that fits the provided title and description.
  `;
 
 interface DocFile {
@@ -102,8 +102,9 @@ export const generateDocs = async (skald: Skald, configPath: string, outputPath:
           
           rulesContent = rulesContent || 'Be concise and professional, but not formal.'
           
-          const result = await skald.chat({
-            query: prompt
+          const result = await skald.generateDoc({
+            prompt,
+            rules: rulesContent
           });
 
           // Create output directory if it doesn't exist

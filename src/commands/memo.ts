@@ -190,7 +190,7 @@ memoCommand
         source: options.source
       });
 
-      if (result.ok) {
+      if (result.memo_uuid) {
         console.log('✅ Memo created successfully!');
       } else {
         console.error('❌ Failed to create memo:', result);

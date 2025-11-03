@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { docsCommand } from './commands/docs/index';
 import { authCommand } from './commands/auth';
 import { memoCommand } from './commands/memo';
 import { chatCommand } from './commands/chat';
@@ -14,7 +13,6 @@ program
   .version('0.1.3');
 
 // Register commands
-program.addCommand(docsCommand);
 program.addCommand(authCommand);
 program.addCommand(memoCommand);
 program.addCommand(chatCommand);

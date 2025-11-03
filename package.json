@@ -24,7 +24,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@skald-labs/skald-node": "^0.1.2",
+    "@skald-labs/skald-node": "^0.2.0",
     "commander": "^11.1.0",
     "js-yaml": "^4.1.0",
     "prompts": "^2.4.2"

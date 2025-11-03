@@ -31,7 +31,7 @@ memoCommand
 
       // Read file content
       const content = fs.readFileSync(options.filePath, 'utf-8');
-      
+
       if (!content.trim()) {
         console.error(`❌ File is empty: ${options.filePath}`);
         process.exit(1);
@@ -52,7 +52,6 @@ memoCommand
       if (tags.length > 0) {
         console.log(`🏷️  Tags: ${tags.join(', ')}`);
       }
-
       // Create the memo
       const result = await skald.createMemo({
         title: options.title,
@@ -63,8 +62,8 @@ memoCommand
         source: options.source
       });
 
-      if (result.ok) {
-        console.log('✅ Memo created successfully!');
+      if (result.memo_uuid) {
+        console.log(`✅ Memo created successfully! UUID: ${result.memo_uuid}`);
       } else {
         console.error('❌ Failed to create memo:', result);
         process.exit(1);

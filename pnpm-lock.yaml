@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@skald-labs/skald-node':
-        specifier: ^0.2.0
-        version: 0.2.2
+        specifier: ^0.4.0
+        version: 0.4.0
       commander:
         specifier: ^11.1.0
         version: 11.1.0
@@ -53,8 +53,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@skald-labs/skald-node@0.2.2':
-    resolution: {integrity: sha512-naTF5h7gmqfs1BngvLSHa0/RyQQTuAXBp04QwRMDhQ4vo4m9jEs22+233LD80TEQldbKRCZScixldep/sfwa+A==}
+  '@skald-labs/skald-node@0.4.0':
+    resolution: {integrity: sha512-iS+BzWhufHQlLCB6IP/k1tJ/WSCDNsd6Ft6GwpgVYBIKGDJaKkuILkp3FLeDTbrjMOP/F5H/rVws+ZCX+gIgrA==}
     engines: {node: '>=18.0.0'}
 
   '@tsconfig/node10@1.0.11':
@@ -166,7 +166,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@skald-labs/skald-node@0.2.2': {}
+  '@skald-labs/skald-node@0.4.0': {}
 
   '@tsconfig/node10@1.0.11': {}
 
